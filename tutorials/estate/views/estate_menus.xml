@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menú raíz -->
+        <record id="menu_root" model="ir.ui.menu">
+            <field name="name">ejemplo</field>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <!-- Menú de primer nivel -->
+        <record id="first_level_menu" model="ir.ui.menu">
+            <field name="name">First Level Menu</field>
+            <field name="parent_id" ref="menu_root"/>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <!-- Menú de acción -->
+        <record id="estate_property_action" model="ir.actions.act_window">
+            <field name="name">Estate Property Action</field>
+            <field name="res_model">estate.property</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Enlazar menú de acción al menú de primer nivel -->
+        <record id="action_menu" model="ir.ui.menu">
+            <field name="name">Action Menu</field>
+            <field name="parent_id" ref="first_level_menu"/>
+            <field name="action" ref="estate_property_action"/>
+            <field name="sequence" eval="10"/>
+        </record>
+    </data>
+</odoo>
+
+

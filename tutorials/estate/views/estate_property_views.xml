@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de árbol -->
+    <record id="view_estate_property_tree" model="ir.ui.view">
+        <field name="name">Estate Property Tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type='xml'>
+            <tree>
+                <field name="name"/>
+                <field name="date_availability"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="garden_orientation"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_estate_property_form" model="ir.ui.view">
+        <field name="name">Estate Property Form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Estate Property">
+                <header>
+                    <button name="%(estate_property_action)d" string="Edit" type="action" class="oe_highlight"/>
+                    <button name="%(estate_property_action)d" string="Create" type="action" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mb32">
+                            <field name="name" class="mb16" widget="html" options='{"style": "font-weight: bold; font-size: larger;"}'/>
+                        </h1>
+                        <div class="oe_inline">
+                            <field name="postcode"/>
+                            <label for="postcode" class="o_form_label o_required_modifier"/>
+                            <field name="expected_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <label for="expected_price" class="o_form_label o_required_modifier"/>
+                        </div>
+                        <div class="oe_inline">
+                            <field name="date_availability"/>
+                            <label for="date_availability" class="o_form_label o_required_modifier"/>
+                            <field name="selling_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <label for="selling_price" class="o_form_label o_required_modifier"/>
+                        </div>
+                    </div>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_estate_property_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Campos de búsqueda">
+                <field name="name" string="Name"/>
+                <field name="date_availability" string="Availability Date"/>
+                <separator/>
+                <filter string="Nuevos" name="new" domain="[('state', '=', 'New')]"/>
+                <filter string="Ofertas recibidas" name="offer_received" domain="[('state', '=', 'offer_received')]"/>
+                <filter string="Ofertas aceptadas" name="offer_accepted" domain="[('state', '=', 'offer_accepted')]"/>
+                <filter string="Vendidos" name="sold" domain="[('state', '=', 'sold')]"/>
+                <filter string="Propiedades Disponibles" name="available" domain="[('state', 'in', ['New', 'offer_received'])]"/>
+                <group expand="1" string="Agrupar por">
+                    <filter string="Código Postal" name="postal_code" context="{'group_by':'postcode'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+</odoo>
+
+
+
+
+
+
