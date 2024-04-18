@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Acción para la vista team resource -->
+        <record id="action_team_resource_tree_view" model="ir.actions.act_window">
+            <field name="name">View Team Resources</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">team.resource</field>
+            <field name="view_mode">tree,form</field>
+            <field name="views" eval="[(ref('view_team_resource_tree'), 'tree'), (ref('view_team_resource_form'), 'form')]"/>
+        </record>
+
+        <!-- Menú principal del módulo MRS Workshift -->
+        <menuitem id="menu_mrs_workshift_main" name="MRS Workshift" sequence="10"/>
+
+        <!-- Menú para Team Resources -->
+        <menuitem id="menu_team_resource" name="Team Resources" parent="menu_mrs_workshift_main" sequence="20"/>
+        <menuitem id="menu_team_resource_tree" name="View Team Resources" parent="menu_team_resource" action="action_team_resource_tree_view" sequence="10"/>
+    </data>
+</odoo>

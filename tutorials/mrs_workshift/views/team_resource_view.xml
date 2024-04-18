@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Vista de árbol para Team Resource -->
+        <record id="view_team_resource_tree" model="ir.ui.view">
+            <field name="name">team.resource.tree.view</field>
+            <field name="model">team.resource</field>
+            <field name="arch" type="xml">
+                <tree string="Team Resources">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Team Resource -->
+        <record id="view_team_resource_form" model="ir.ui.view">
+            <field name="name">team.resource.form.view</field>
+            <field name="model">team.resource</field>
+            <field name="arch" type="xml">
+                <form string="Team Resource">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="employee_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

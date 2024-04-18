@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <!-- Menú raíz -->
         <record id="menu_root" model="ir.ui.menu">
-            <field name="name">ejemplo</field>
+            <field name="name">Ejemplo</field>
             <field name="sequence" eval="10"/>
         </record>
 
@@ -14,19 +13,54 @@
             <field name="sequence" eval="10"/>
         </record>
 
-        <!-- Menú de acción -->
+        <!-- Menú de acción para estate.property -->
         <record id="estate_property_action" model="ir.actions.act_window">
             <field name="name">Estate Property Action</field>
             <field name="res_model">estate.property</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <!-- Enlazar menú de acción al menú de primer nivel -->
-        <record id="action_menu" model="ir.ui.menu">
-            <field name="name">Action Menu</field>
+        <!-- Menú de acción para estate.property.type -->
+        <record id="estate_property_type_action" model="ir.actions.act_window">
+            <field name="name">Estate Property Type Action</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú de acción para estate.property.tag -->
+        <record id="estate_property_tag_action" model="ir.actions.act_window">
+            <field name="name">Estate Property Tag Action</field>
+            <field name="res_model">estate.property.tag</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Enlazar menú de acción de estate.property al menú de primer nivel -->
+        <record id="action_estate_property_menu" model="ir.ui.menu">
+            <field name="name">Estate Property</field>
             <field name="parent_id" ref="first_level_menu"/>
             <field name="action" ref="estate_property_action"/>
             <field name="sequence" eval="10"/>
+        </record>
+
+        <!-- Enlazar menú de acción de estate.property.type al menú de primer nivel -->
+        <record id="action_estate_property_type_menu" model="ir.ui.menu">
+            <field name="name">Estate Property Type</field>
+            <field name="parent_id" ref="first_level_menu"/>
+            <field name="action" ref="estate_property_type_action"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <!-- Enlazar menú de acción de estate.property.tag al menú de primer nivel -->
+        <record id="action_estate_property_tag_menu" model="ir.ui.menu">
+            <field name="name">Estate Property Tag</field>
+            <field name="parent_id" ref="first_level_menu"/>
+            <field name="action" ref="estate_property_tag_action"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <record id="model_estate_property_tag" model="ir.model">
+            <field name="name">Estate Property Tag</field>
+            <field name="model">estate.property.tag</field>
         </record>
     </data>
 </odoo>
